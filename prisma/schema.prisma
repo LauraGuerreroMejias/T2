@@ -1,0 +1,85 @@
+//To migrate this file use the command: npx prisma migrate dev
+generator client {
+    provider = "prisma-client-js"
+    binaryTargets = ["native"]
+}
+
+datasource db {
+    provider = "postgresql"
+    url = env("DATABASE_URL")
+}
+
+model personajes {
+    id Int @id @default(autoincrement())
+    nombre String @db.VarChar(45)
+    fuerza Int
+    fecha_nacimiento DateTime @db.Date
+    objeto String? @db.VarChar(30)
+    karts karts[]
+    trabajos persona_tiene_trabajo[]
+    habita persona_habita_reino[]
+}
+
+model karts {
+    id Int @id @default(autoincrement())
+    modelo String @db.VarChar(45)
+    color String @db.VarChar(45)
+    velocidad_maxima Int
+    id_personaje Int
+    personajes personajes @relation(fields: [id_personaje], references: [id], onDelete: Cascade, onUpdate: Cascade)
+}
+
+model trabajos {
+    id Int @id @default(autoincrement())
+    descripcion String? @db.VarChar(45)
+    sueldo Int
+    persona_trabajo persona_tiene_trabajo[]
+}
+
+model persona_tiene_trabajo {
+    id_trabajo Int
+    id_personaje Int
+    trabajo trabajos @relation(fields: [id_trabajo], references: [id], onDelete: Cascade, onUpdate: Cascade)
+    personajes personajes @relation(fields: [id_personaje], references: [id], onDelete: Cascade, onUpdate: Cascade)
+    @@id([id_personaje, id_trabajo])
+}
+
+model reinos {
+    id Int @id
+    nombre String @db.VarChar(45)
+    ubicacion String @db.VarChar(45)
+    superficie Int
+    habitante persona_habita_reino[]
+    diplomacia_1 diplomacias[] @relation("diplomacia_1")
+    diplomacia_2 diplomacias[] @relation("diplomacia_2")
+    defensa reino_tiene_defensa[]
+}
+
+model persona_habita_reino {
+    id_personaje Int
+    personaje personajes @relation(fields: [id_personaje], references: [id], onDelete: Cascade, onUpdate: Cascade)
+    id_reino Int
+    reino reinos @relation(fields: [id_reino], references: [id], onDelete: Cascade, onUpdate: Cascade)
+    fecha_registro DateTime @default(now())
+    es_gobernante Boolean @db.Boolean
+    @@id([id_personaje, id_reino])
+}
+
+model diplomacias {
+    id_reino_1 Int
+    reino_1 reinos @relation("diplomacia_1", fields: [id_reino_1], references: [id], onDelete: Cascade, onUpdate: Cascade)
+    id_reino_2 Int
+    reino_2 reinos @relation("diplomacia_2", fields: [id_reino_2], references: [id], onDelete: Cascade, onUpdate: Cascade)
+    es_aliado Boolean @db.Boolean
+    @@id([id_reino_1, id_reino_2])
+}
+
+model defensas {
+    id Int @id
+    defensa String @db.VarChar(45)
+}
+
+model reino_tiene_defensa {
+    id_reino Int @id
+    reino reinos @relation(fields: [id_reino], references: [id], onDelete: Cascade, onUpdate: Cascade)
+}
