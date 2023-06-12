@@ -105,7 +105,7 @@ const insertKart = async (req, res) => {
             id_personaje: id_personaje ? parseInt(id_personaje) : undefined
         }
     })
-    res.json(kart)
+    res.status(201).json(kart)
 }
 
 const updateKart = async (req, res) => {

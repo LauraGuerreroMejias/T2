@@ -75,11 +75,16 @@ model diplomacias {
 }
 
 model defensas {
-    id Int @id
+    id Int @id @default(autoincrement())
     defensa String @db.VarChar(45)
+    reino_tiene_defensa reino_tiene_defensa[]
 }
 
 model reino_tiene_defensa {
-    id_reino Int @id
+    id_reino Int
     reino reinos @relation(fields: [id_reino], references: [id], onDelete: Cascade, onUpdate: Cascade)
+    id_defensa Int
+    defensa defensas @relation(fields: [id_defensa], references: [id], onDelete: Cascade, onUpdate: Cascade)
+    cantidad Int
+    @@id([id_reino, id_defensa])
 }

@@ -123,7 +123,7 @@ const insertPersonaje = async (req, res) => {
             objeto
         }
     })
-    res.json({message: 'Created successfully', personaje})
+    res.status(201).json({message: 'Created successfully', personaje})
 }
 
 const updatePersonaje = async (req, res) => {

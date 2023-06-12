@@ -76,7 +76,7 @@ const insertTrabajo = async (req, res) => {
         }
     })
 
-    res.json({message: 'Trabajo created successfully', trabajo})
+    res.status(201).json({message: 'Trabajo created successfully', trabajo})
 }
 
 const updateTrabajo = async (req, res) => {

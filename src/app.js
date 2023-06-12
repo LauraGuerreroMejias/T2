@@ -32,10 +32,30 @@ app.post('/api/trabajos', UsersController.insertTrabajo);
 app.put('/api/trabajos', UsersController.updateTrabajo);
 app.delete('/api/trabajos', UsersController.deleteTrabajo);
 //======================Personaje_habita_reino===============================//
+app.get('/api/personaje_habita_reino', UsersController.getPersonajeReino);
+app.post('/api/personaje_habita_reino', UsersController.insertPersonajeReino);
+app.put('/api/personaje_habita_reino', UsersController.updatePersonajeReino);
+app.delete('/api/personaje_habita_reino', UsersController.deletePersonajeReino);
 //======================Reinos===============================//
+app.get('/api/reinos', UsersController.getReinos);
+app.post('/api/reinos', UsersController.insertReino);
+app.put('/api/reinos', UsersController.updateReino);
+app.delete('/api/reinos', UsersController.deleteReino);
 //======================Defensas===============================//
+app.get('/api/defensas', UsersController.getDefensas);
+app.post('/api/defensas', UsersController.insertDefensa);
+app.put('/api/defensas', UsersController.updateDefensa);
+app.delete('/api/defensas', UsersController.deleteDefensa);
 //======================Dimplomacias===============================//
+app.get('/api/diplomacias', UsersController.getDiplomacias);
+app.post('/api/diplomacias', UsersController.insertDiplomacia);
+app.put('/api/diplomacias', UsersController.updateDiplomacia);
+app.delete('/api/diplomacias', UsersController.deleteDiplomacia);
 //======================Reino_tiene_defensa===============================//
+app.get('/api/reino_tiene_defensa', UsersController.getReinoDefensas);
+app.post('/api/reino_tiene_defensa', UsersController.insertReinoDefensa);
+app.put('/api/reino_tiene_defensa', UsersController.updateReinoDefensa);
+app.delete('/api/reino_tiene_defensa', UsersController.deleteReinoDefensa);
 //==========================================================//
 app.get('/', (req, res) => {
     res.json({ message: 'Hello World!!' });

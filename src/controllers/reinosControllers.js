@@ -92,7 +92,7 @@ const insertReino = async (req, res) => {
         }
     })
 
-    res.json({message: 'Reino created successfully', reino: reino})
+    res.status(201).json({message: 'Reino created successfully', reino: reino})
 }
 
 const updateReino = async (req, res) => {
@@ -170,3 +170,5 @@ const deleteReino = async (req, res) => {
 
     res.json({message: 'Reino deleted successfully', reino: reino})
 }
+
+export { getReinos, insertReino, updateReino, deleteReino }

@@ -140,6 +140,18 @@ const insertPersonajeTrabajo = async (req, res) => {
         return
     }
 
+    const personajeTrabajoExists = await prisma.personaje_tiene_trabajo.findUnique({
+        where: {
+            id_trabajo: parseInt(id_trabajo),
+            id_personaje: parseInt(id_personaje)
+        }
+    })
+
+    if(personajeTrabajoExists){
+        res.status(400).json({error: 'Personaje already has this trabajo'})
+        return
+    }
+
     const personajeTrabajo = await prisma.personaje_tiene_trabajo.create({
         data: {
             id_trabajo: parseInt(id_trabajo),
@@ -149,7 +161,7 @@ const insertPersonajeTrabajo = async (req, res) => {
         }
     })
 
-    res.json({message : 'personaje_tiene_trabajo created successfully', data: personajeTrabajo})
+    res.status(201).json({message : 'personaje_tiene_trabajo created successfully', data: personajeTrabajo})
 }
 
 const updatePersonajeTrabajo = async (req, res) => {
