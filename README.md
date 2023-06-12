@@ -27,7 +27,7 @@ npm run dev
 
 ### Personajes
 
-#### Crear personaje
+#### (GET) Crear personaje - /api/personajes
 
 Parámetros:
 
