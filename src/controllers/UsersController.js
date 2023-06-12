@@ -7,6 +7,7 @@ import { getPersonajeReino, insertPersonajeReino, updatePersonajeReino, deletePe
 import { getDiplomacias, insertDiplomacia, updateDiplomacia, deleteDiplomacia } from './diplomaciasControllers.js'
 import { getDefensas, insertDefensa, updateDefensa, deleteDefensa } from './defensasControllers.js'
 import { getReinoDefensas, insertReinoDefensa, updateReinoDefensa, deleteReinoDefensa } from './reinoDefensasControllers.js'
+import { top_5_personajes_con_mas_fuerza, personaje_con_mas_karts, cantidad_habitantes, gobernante } from './endpointsControllers.js'
 
 const controllers = {
     getPersonajes,
@@ -44,7 +45,11 @@ const controllers = {
     getReinoDefensas,
     insertReinoDefensa,
     updateReinoDefensa,
-    deleteReinoDefensa
+    deleteReinoDefensa,
+    top_5_personajes_con_mas_fuerza,
+    personaje_con_mas_karts,
+    cantidad_habitantes,
+    gobernante
 }
 
 export default controllers

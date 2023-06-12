@@ -56,6 +56,11 @@ app.get('/api/reino_tiene_defensa', UsersController.getReinoDefensas);
 app.post('/api/reino_tiene_defensa', UsersController.insertReinoDefensa);
 app.put('/api/reino_tiene_defensa', UsersController.updateReinoDefensa);
 app.delete('/api/reino_tiene_defensa', UsersController.deleteReinoDefensa);
+//======================EndPoints===============================//
+app.get('/api/top5personajesConMasFuerza', UsersController.top_5_personajes_con_mas_fuerza);
+app.get('/api/personajeConMasKarts', UsersController.personaje_con_mas_karts);
+app.get('/api/cantidadHabitantes/:id_reino', UsersController.cantidad_habitantes);
+app.get('/api/gobernante/:id_reino', UsersController.gobernante);
 //==========================================================//
 app.get('/', (req, res) => {
     res.json({ message: 'Hello World!!' });
