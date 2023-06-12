@@ -36,4 +36,4 @@ Parámetros:
 - fecha_nacimiento: date (required)
 - objeto: varchar(45)
 
-![](https://github.com/Konnits/T2.git/Images/crear_personaje.png)
+![](https://github.com/Konnits/T2/blob/main/Images/crear_personaje.png)
